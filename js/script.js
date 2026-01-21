@@ -113,16 +113,13 @@ contactForm.addEventListener('submit', async (e) => {
     btnLoading.style.display = 'inline';
     submitBtn.disabled = true;
 
-    // Simulate form submission (replace with actual API call)
+    // Simulate form submission (replace with actual API call in production)
     try {
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 1500));
         
         // Success
         showMessage('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.', 'success');
         contactForm.reset();
-        
-        // Log form data (in production, send to backend)
-        console.log('Form submitted:', formData);
     } catch (error) {
         showMessage('Terjadi kesalahan. Silakan coba lagi.', 'error');
     } finally {
@@ -196,8 +193,17 @@ newsletterForm?.addEventListener('submit', (e) => {
     const email = newsletterForm.querySelector('input').value;
     
     if (email) {
-        alert('Terima kasih! Anda telah berlangganan newsletter kami.');
-        newsletterForm.reset();
+        // Show success feedback
+        const button = newsletterForm.querySelector('button');
+        const originalHTML = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i>';
+        button.style.background = '#10b981';
+        
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+            newsletterForm.reset();
+        }, 2000);
     }
 });
 
@@ -294,5 +300,3 @@ externalLinks.forEach(link => {
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener noreferrer');
 });
-
-console.log('TechVision Consulting Website Loaded Successfully! 🚀');
