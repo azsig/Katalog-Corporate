@@ -167,12 +167,15 @@ animateElements.forEach(el => {
 // Back to Top Button
 // ===================================
 const backToTopBtn = document.getElementById('back-to-top');
+const developerBadge = document.getElementById('developer-badge');
 
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
         backToTopBtn.classList.add('visible');
+        developerBadge.classList.add('visible');
     } else {
         backToTopBtn.classList.remove('visible');
+        developerBadge.classList.remove('visible');
     }
 });
 
@@ -181,6 +184,11 @@ backToTopBtn.addEventListener('click', () => {
         top: 0,
         behavior: 'smooth'
     });
+});
+
+// Add click event to developer badge
+developerBadge.addEventListener('click', () => {
+    window.open('https://github.com/azsig', '_blank');
 });
 
 // ===================================
