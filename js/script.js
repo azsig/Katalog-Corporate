@@ -172,14 +172,8 @@ const developerBadge = document.getElementById('developer-badge');
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
         backToTopBtn.classList.add('visible');
-        if (developerBadge) {
-            developerBadge.classList.add('visible');
-        }
     } else {
         backToTopBtn.classList.remove('visible');
-        if (developerBadge) {
-            developerBadge.classList.remove('visible');
-        }
     }
 });
 
