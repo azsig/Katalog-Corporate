@@ -172,10 +172,14 @@ const developerBadge = document.getElementById('developer-badge');
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
         backToTopBtn.classList.add('visible');
-        developerBadge.classList.add('visible');
+        if (developerBadge) {
+            developerBadge.classList.add('visible');
+        }
     } else {
         backToTopBtn.classList.remove('visible');
-        developerBadge.classList.remove('visible');
+        if (developerBadge) {
+            developerBadge.classList.remove('visible');
+        }
     }
 });
 
@@ -187,9 +191,11 @@ backToTopBtn.addEventListener('click', () => {
 });
 
 // Add click event to developer badge
-developerBadge.addEventListener('click', () => {
-    window.open('https://github.com/azsig', '_blank');
-});
+if (developerBadge) {
+    developerBadge.addEventListener('click', () => {
+        window.open('https://github.com/azsig', '_blank', 'noopener,noreferrer');
+    });
+}
 
 // ===================================
 // Newsletter Form
